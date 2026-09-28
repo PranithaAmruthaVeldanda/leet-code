@@ -1,243 +1,257 @@
-# 🐍 Python for LeetCode — Cheat Sheet
+# 🐍 Python DSA Cheat Sheet
 
-A quick reference for the Python syntax, data structures, and patterns I need while solving LeetCode / Blind 75 problems.
+A practical Python reference for solving **Data Structures & Algorithms (DSA)** and **LeetCode / Blind 75** problems.
 
 ---
 
-## 1. Variables & Math
+# 📚 Table of Contents
+
+* [Python Basics](#-python-basics)
+* [Lists / Arrays](#-lists--arrays)
+* [Strings](#-strings)
+* [Hash Map / Dictionary](#-hash-map--dictionary)
+* [Hash Set](#-hash-set)
+* [Counter](#-counter)
+* [Stack](#-stack)
+* [Queue](#-queue)
+* [Linked List](#-linked-list)
+* [Trees](#-trees)
+* [Graphs](#-graphs)
+* [Two Pointers](#-two-pointers)
+* [Sliding Window](#-sliding-window)
+* [Binary Search](#-binary-search)
+* [Prefix Sum](#-prefix-sum)
+* [Heap / Priority Queue](#-heap--priority-queue)
+* [Recursion](#-recursion)
+* [Backtracking](#-backtracking)
+* [Dynamic Programming](#-dynamic-programming)
+* [Sorting](#-sorting)
+* [XOR](#-xor)
+* [Useful Python Functions](#-useful-python-functions)
+* [Time & Space Complexity](#-time--space-complexity)
+* [LeetCode Pattern Recognition](#-leetcode-pattern-recognition)
+
+---
+
+# 🐍 Python Basics
+
+## Variables
 
 ```python
 x = 10
-x += 1
-x -= 1
-x *= 2
+name = "Python"
 ```
 
-### Operators
-
-```text
-+       addition
--       subtraction
-*       multiplication
-/       division
-//      integer division
-%       remainder
-**      power
-```
+## Assignment vs Comparison
 
 ```python
-7 / 2     # 3.5
-7 // 2    # 3
-7 % 2     # 1
-2 ** 3    # 8
+x = 10       # assign
+
+x == 10      # compare
+x != 10      # not equal
 ```
 
-### Useful functions
+## Comparison Operators
 
 ```python
-len(nums)
-sum(nums)
-min(nums)
-max(nums)
-abs(x)
+a == b       # equal
+a != b       # not equal
+a > b        # greater
+a < b        # smaller
+a >= b       # greater or equal
+a <= b       # smaller or equal
+```
+
+## Logical Operators
+
+```python
+and
+or
+not
+```
+
+Example:
+
+```python
+if x > 0 and y > 0:
+    print("Both positive")
+```
+
+## Math Operators
+
+```python
++       # addition
+-       # subtraction
+*       # multiplication
+/       # division
+//      # integer division
+%       # remainder
+**      # power
+```
+
+Example:
+
+```python
+7 / 2      # 3.5
+7 // 2     # 3
+7 % 2      # 1
+2 ** 3     # 8
 ```
 
 ---
 
-# 2. Lists
+# 📦 Lists / Arrays
+
+Python uses `list` for most array problems.
 
 ```python
 nums = [1, 2, 3, 4]
 ```
 
-### Access
+## Access
 
 ```python
-nums[0]       # first
-nums[-1]      # last
+nums[0]       # first element
+nums[-1]      # last element
+nums[i]       # element at index i
 ```
 
-### Modify
+## Modify
 
 ```python
 nums.append(5)
 nums.pop()
-nums.remove(2)
+nums.insert(1, 10)
+nums.remove(10)
 ```
 
-### Slicing
+## Slicing
 
 ```python
-nums[1:3]     # index 1 through 2
+nums[1:4]     # index 1 to 3
 nums[:3]      # first 3
-nums[2:]      # from index 2
+nums[2:]      # index 2 onward
 nums[::-1]    # reverse
 ```
 
-### Sorting
-
-```python
-nums.sort()             # modifies nums
-sorted_nums = sorted(nums)  # creates new list
-```
-
-```python
-nums.sort(reverse=True)
-```
-
-### Remember
-
-```text
-List → ordered collection
-Duplicates allowed
-Index based
-```
-
----
-
-# 3. Loops ⭐
-
-## Values only
-
-Use when you only need the values:
+## Loop Through Values
 
 ```python
 for num in nums:
     print(num)
 ```
 
-Think:
+Use when you only need the value.
 
-> "Give me each value."
-
----
----
-## Index + value
-
-Use `enumerate()`:
+## Index + Value
 
 ```python
 for i, num in enumerate(nums):
     print(i, num)
 ```
 
-Think:
+Use when you need both the index and value.
 
-> "Give me the position AND the value."
-
-Example:
-
-```python
-for i, num in enumerate(nums):
-    if num == target:
-        return i
-```
-
----
-
-## Index only
-
-Use `range()`:
+## Index
 
 ```python
 for i in range(len(nums)):
     print(nums[i])
 ```
 
-Use this when you need positions/neighbors:
+Use when you need indexes or neighboring elements.
 
-```python
-for i in range(len(nums) - 1):
-    if nums[i] < nums[i + 1]:
-        ...
-```
-
----
-
-## Range
-
-```python
-range(5)
-# 0 1 2 3 4
-
-range(1, 5)
-# 1 2 3 4
-
-range(5, 0, -1)
-# 5 4 3 2 1
-```
-
-### Quick rule
+### Remember
 
 ```text
-Value only
+Values only
 → for num in nums
 
 Index + value
 → for i, num in enumerate(nums)
 
-Need positions/neighbors
+Indexes / neighbors
 → for i in range(len(nums))
 ```
 
+## Sorting
+
+```python
+nums.sort()              # modifies nums
+
+sorted_nums = sorted(nums)   # returns new list
+
+nums.sort(reverse=True)
+```
+
+## List Complexity
+
+| Operation        |   Complexity |
+| ---------------- | -----------: |
+| Access `nums[i]` |         O(1) |
+| Search           |         O(n) |
+| Append           | O(1) average |
+| Pop from end     |         O(1) |
+| Insert beginning |         O(n) |
+| Delete beginning |         O(n) |
+| Sort             |   O(n log n) |
+
 ---
 
-# 4. Strings
+# 🔤 Strings
 
 ```python
 s = "hello"
 ```
 
-### Access
+## Access
 
 ```python
 s[0]
 s[-1]
 ```
 
-### Length
+## Length
 
 ```python
 len(s)
 ```
 
-### Slice
+## Slicing
 
 ```python
 s[1:4]
+s[:3]
+s[2:]
+s[::-1]       # reverse
 ```
 
-### Reverse
+## Check Character
 
 ```python
-s[::-1]
+"a" in s
 ```
 
-### Check
+## Loop
 
 ```python
-if "a" in s:
+for char in s:
+    print(char)
 ```
 
-### Useful methods
+## Useful Methods
 
 ```python
 s.lower()
 s.upper()
 s.strip()
 s.split()
-```
-
-Strings can be looped through:
-
-```python
-for char in s:
-    ...
+s.replace("a", "b")
 ```
 
 ---
 
-# 5. Dictionary / Hash Map ⭐⭐⭐
+# 🗂️ Hash Map / Dictionary
 
 A dictionary stores:
 
@@ -248,111 +262,124 @@ key → value
 Create:
 
 ```python
-result = {}
+hashmap = {}
 ```
 
-Store:
+## Add / Update
 
 ```python
-result[num] = i
+hashmap[key] = value
 ```
 
-Get:
+## Access
 
 ```python
-result[num]
+hashmap[key]
 ```
 
-Check:
+## Check
 
 ```python
-if num in result:
+if key in hashmap:
+    ...
 ```
 
-Delete:
+## Safe Access
 
 ```python
-del result[num]
+hashmap.get(key, 0)
 ```
 
----
+## Delete
 
-## Frequency counting
+```python
+del hashmap[key]
+```
+
+## Frequency Counting
 
 ```python
 count = {}
 
 for num in nums:
-    if num in count:
-        count[num] += 1
-    else:
-        count[num] = 1
-```
-
-Shorter:
-
-```python
-count[num] = count.get(num, 0) + 1
-```
-
-Remember:
-
-```python
-dictionary.get(key, default)
-```
-
----
-
-## Mental trigger
-
-When you see:
-
-> "Have I seen this?"
-
-or:
-
-> "I need to remember information about this value."
-
-Think:
-
-```text
-HASH MAP / DICTIONARY
-```
-
----
-
-# 6. Set / Hash Set ⭐⭐⭐
-
-A set stores unique values.
-
-```python
-seen = set()
-```
-
-Add:
-
-```python
-seen.add(num)
-```
-
-Check:
-
-```python
-if num in seen:
-```
-
-Remove:
-
-```python
-seen.remove(num)
+    count[num] = count.get(num, 0) + 1
 ```
 
 Example:
 
 ```python
+nums = [1, 2, 2, 3, 3, 3]
+
+count = {}
+
+for num in nums:
+    count[num] = count.get(num, 0) + 1
+```
+
+Result:
+
+```text
+1 → 1
+2 → 2
+3 → 3
+```
+
+## Mental Trigger
+
+```text
+"Have I seen this?"
+"Where did I see this?"
+"What information belongs to this value?"
+        ↓
+    HASH MAP
+```
+
+## Complexity
+
+Average:
+
+```text
+Insert → O(1)
+Search → O(1)
+Delete → O(1)
+```
+
+---
+
+# 🔢 Hash Set
+
+A set stores **unique values**.
+
+```python
+seen = set()
+```
+
+## Add
+
+```python
+seen.add(num)
+```
+
+## Check
+
+```python
+if num in seen:
+    ...
+```
+
+## Remove
+
+```python
+seen.remove(num)
+```
+
+## Example
+
+```python
 seen = set()
 
 for num in nums:
+
     if num in seen:
         return True
 
@@ -361,131 +388,113 @@ for num in nums:
 return False
 ```
 
-### Mental trigger
-
-> "Have I seen this before?"
-
-→ **Set**
-
----
-
-# 7. Dictionary vs Set
+## Mental Trigger
 
 ```text
-Dictionary
-    key → value
-
-Set
-    value only
+"Have I seen this before?"
+        ↓
+       SET
 ```
 
-### Use Dictionary when:
+## Complexity
+
+Average:
 
 ```text
-number → index
-character → count
-word → information
-```
-
-### Use Set when:
-
-```text
-Have I seen this?
-Is this value present?
-Remove duplicates
+Insert → O(1)
+Search → O(1)
+Delete → O(1)
 ```
 
 ---
 
-# 8. Counter ⭐⭐
+# 🔢 Counter
 
-For frequency problems:
+`Counter` is a dictionary designed for counting.
 
 ```python
 from collections import Counter
 ```
 
+## Count Values
+
 ```python
+nums = [1, 1, 2, 2, 2, 3]
+
 count = Counter(nums)
 ```
 
-Example:
-
-```python
-nums = [1, 1, 2, 3, 3, 3]
-
-Counter(nums)
-```
-
-Conceptually:
+Result:
 
 ```text
 1 → 2
-2 → 1
-3 → 3
+2 → 3
+3 → 1
 ```
 
-For strings:
+## Count Characters
 
 ```python
+s = "banana"
+
 count = Counter(s)
 ```
 
-Useful for:
-
-* Valid Anagram
-* Top K Frequent Elements
-* Frequency problems
-
----
-
-# 9. defaultdict
-
-```python
-from collections import defaultdict
-```
-
-Example:
-
-```python
-groups = defaultdict(list)
-
-groups["a"].append("apple")
-groups["a"].append("ant")
-```
-
-Useful when one key maps to multiple values.
-
-Common use:
+Result:
 
 ```text
-Group Anagrams
-Graph adjacency lists
+a → 3
+n → 2
+b → 1
+```
+
+## Most Common
+
+```python
+count.most_common(2)
+```
+
+## Mental Trigger
+
+```text
+"How many times?"
+"Frequency?"
+"Most frequent?"
+        ↓
+     COUNTER
+```
+
+Common problems:
+
+```text
+Valid Anagram
+Top K Frequent Elements
+Frequency problems
 ```
 
 ---
 
-# 10. Stack ⭐⭐
+# 📚 Stack
 
-Python list can be used as a stack.
+Python `list` can be used as a stack.
 
 ```python
 stack = []
 ```
 
-Push:
+## Push
 
 ```python
 stack.append(x)
 ```
 
-Pop:
+## Pop
 
 ```python
 x = stack.pop()
 ```
 
-Look at top:
+## Peek
 
 ```python
 stack[-1]
@@ -496,41 +505,49 @@ Mental model:
 ```text
 Last In → First Out
 
-    3  ← top
+    3 ← top
     2
     1
 ```
 
-Think **Stack** for:
+## Mental Trigger
 
-* Parentheses
-* Nested structures
-* Undo-like behavior
-* Monotonic stack problems
+```text
+Matching
+Nested
+Last In → First Out
+        ↓
+      STACK
+```
+
+Common problems:
+
+```text
+Valid Parentheses
+Min Stack
+Daily Temperatures
+Evaluate Reverse Polish Notation
+```
 
 ---
 
-# 11. Queue / deque ⭐⭐
+# 🚶 Queue
 
-Use `deque`:
+Use `deque` for a queue.
 
 ```python
 from collections import deque
-```
 
-Create:
-
-```python
 queue = deque()
 ```
 
-Add:
+## Add
 
 ```python
 queue.append(x)
 ```
 
-Remove from front:
+## Remove
 
 ```python
 x = queue.popleft()
@@ -540,163 +557,206 @@ Mental model:
 
 ```text
 First In → First Out
+
+1 → 2 → 3 → 4
+↑
+front
 ```
 
-Commonly used for:
+## Mental Trigger
+
+```text
+First In → First Out
+Level by level
+        ↓
+      QUEUE
+```
+
+Common use:
 
 ```text
 BFS
-Tree level-order traversal
-Graph traversal
+Tree Level Order
+Graph Traversal
 ```
 
 ---
 
-# 12. Tuples
+# 🔗 Linked List
+
+Typical LeetCode node:
 
 ```python
-pair = (2, 5)
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
 ```
 
-Access:
+## Traverse
 
 ```python
-pair[0]
-pair[1]
-```
+current = head
 
-Very useful for:
-
-```python
-queue.append((row, col))
-```
-
-or:
-
-```python
-return [i, j]
-```
-
-Think:
-
-```text
-(row, col)
-(x, y)
-(i, j)
-```
-
----
-
-# 13. `if / elif / else`
-
-```python
-if x > 0:
-    ...
-elif x == 0:
-    ...
-else:
-    ...
-```
-
-### Conditions
-
-```python
-x > 0
-x < 0
-x == 0
-x != 0
-x >= 0
-x <= 0
-```
-
-### Logical operators
-
-```python
-and
-or
-not
-```
-
-Python:
-
-```python
-if x > 0 and y > 0:
-```
-
-Not:
-
-```text
-&&
-||
-!
-```
-
----
-
-# 14. `while` Loop ⭐
-
-Useful for:
-
-* Two pointers
-* Binary search
-* Linked lists
-
-Example:
-
-```python
-left = 0
-right = len(nums) - 1
-
-while left < right:
-    ...
-```
-
----
-
-# 15. `break`, `continue`, `return`
-
-### break
-
-Exit the loop:
-
-```python
-for num in nums:
-    if num == target:
-        break
-```
-
-### continue
-
-Skip current iteration:
-
-```python
-for num in nums:
-    if num < 0:
-        continue
-```
-
-### return
-
-Exit the entire function:
-
-```python
-if num == target:
-    return True
+while current:
+    print(current.val)
+    current = current.next
 ```
 
 Remember:
 
 ```text
-break     → exit loop
-continue  → skip iteration
-return    → exit function
+node.val
+node.next
+```
+
+## Common Patterns
+
+```text
+Fast / Slow Pointer
+Reverse Linked List
+Merge Linked Lists
+Detect Cycle
 ```
 
 ---
 
-# 16. Two Pointers ⭐⭐⭐
+# 🌳 Trees
 
-Typical template:
+Typical LeetCode node:
+
+```python
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+```
+
+Remember:
+
+```text
+node.val
+node.left
+node.right
+```
+
+---
+
+## DFS — Depth First Search
+
+Go deep before exploring the next branch.
+
+```python
+def dfs(node):
+
+    if not node:
+        return
+
+    dfs(node.left)
+    dfs(node.right)
+```
+
+Mental trigger:
+
+```text
+"Go deep"
+    ↓
+   DFS
+```
+
+---
+
+## BFS — Breadth First Search
+
+Explore level by level.
+
+```python
+from collections import deque
+
+queue = deque([root])
+
+while queue:
+
+    node = queue.popleft()
+
+    if node.left:
+        queue.append(node.left)
+
+    if node.right:
+        queue.append(node.right)
+```
+
+Mental trigger:
+
+```text
+"Level by level"
+       ↓
+      BFS
+```
+
+---
+
+# 🕸️ Graphs
+
+A common representation is an adjacency list.
+
+```python
+graph = {
+    1: [2, 3],
+    2: [1, 4],
+    3: [1],
+    4: [2]
+}
+```
+
+Or:
+
+```python
+from collections import defaultdict
+
+graph = defaultdict(list)
+
+graph[a].append(b)
+graph[b].append(a)
+```
+
+## Graph DFS
+
+```python
+def dfs(node):
+
+    if node in visited:
+        return
+
+    visited.add(node)
+
+    for neighbor in graph[node]:
+        dfs(neighbor)
+```
+
+## Graph BFS
+
+```python
+queue = deque([start])
+visited.add(start)
+
+while queue:
+
+    node = queue.popleft()
+
+    for neighbor in graph[node]:
+
+        if neighbor not in visited:
+            visited.add(neighbor)
+            queue.append(neighbor)
+```
+
+---
+
+# ↔️ Two Pointers
+
+Use two indexes that move through the data.
 
 ```python
 left = 0
@@ -704,20 +764,24 @@ right = len(nums) - 1
 
 while left < right:
 
-    if condition:
+    if nums[left] + nums[right] == target:
+        return [left, right]
+
+    elif nums[left] + nums[right] < target:
         left += 1
+
     else:
         right -= 1
 ```
 
-Mental trigger:
+## Mental Trigger
 
 ```text
-Sorted array
+SORTED
 +
-Pair / two ends
-↓
-Two Pointers
+PAIR / TWO ENDS
+        ↓
+  TWO POINTERS
 ```
 
 Common problems:
@@ -731,9 +795,11 @@ Valid Palindrome
 
 ---
 
-# 17. Sliding Window ⭐⭐⭐
+# 🪟 Sliding Window
 
-Typical structure:
+Used for **contiguous** subarrays or substrings.
+
+Basic template:
 
 ```python
 left = 0
@@ -742,37 +808,36 @@ for right in range(len(nums)):
 
     # expand window
 
-    while invalid:
+    while condition_is_invalid:
         left += 1
 
-    # use current window
+    # process window
 ```
 
 Mental trigger:
 
 ```text
-Contiguous section
+CONTIGUOUS
 +
-Longest / shortest / maximum / minimum
-↓
-Sliding Window
+LONGEST / SHORTEST / MAX / MIN
+        ↓
+  SLIDING WINDOW
 ```
 
-Examples:
+Common problems:
 
 ```text
-Longest Substring Without Repeating Characters
 Best Time to Buy and Sell Stock
+Longest Substring Without Repeating Characters
 Longest Repeating Character Replacement
+Minimum Window Substring
 ```
 
 ---
 
-# 18. Binary Search ⭐⭐⭐
+# 🔎 Binary Search
 
-Use when the search space is sorted or can be divided in half.
-
-Template:
+Use when the search space is sorted or you can eliminate half the possibilities.
 
 ```python
 left = 0
@@ -794,27 +859,282 @@ while left <= right:
 return -1
 ```
 
-Mental trigger:
-
-```text
-Sorted
-+
-Can eliminate half
-↓
-Binary Search
-```
-
 Complexity:
 
 ```text
 O(log n)
 ```
 
+Mental trigger:
+
+```text
+SORTED
++
+SEARCH
+        ↓
+ BINARY SEARCH
+```
+
 ---
 
-# 19. XOR ⭐⭐
+# ➕ Prefix Sum
 
-Operator:
+Useful for repeated range/subarray sum calculations.
+
+```python
+prefix = [0]
+
+for num in nums:
+    prefix.append(prefix[-1] + num)
+```
+
+Example:
+
+```text
+nums:
+[2, 4, 1, 5]
+
+prefix:
+[0, 2, 6, 7, 12]
+```
+
+Range sum from `i` to `j`:
+
+```python
+prefix[j + 1] - prefix[i]
+```
+
+Mental trigger:
+
+```text
+Repeated range / subarray sum
+        ↓
+    PREFIX SUM
+```
+
+---
+
+# 🏆 Heap / Priority Queue
+
+Python provides `heapq`.
+
+```python
+import heapq
+```
+
+## Create
+
+```python
+heap = []
+```
+
+## Add
+
+```python
+heapq.heappush(heap, x)
+```
+
+## Remove Smallest
+
+```python
+x = heapq.heappop(heap)
+```
+
+Python's `heapq` is a **min-heap** by default.
+
+## Mental Trigger
+
+```text
+TOP K
++
+PRIORITY
++
+Repeatedly need smallest/largest
+        ↓
+       HEAP
+```
+
+Common problems:
+
+```text
+Kth Largest Element
+Top K Frequent Elements
+Merge K Sorted Lists
+Find Median from Data Stream
+```
+
+---
+
+# 🔁 Recursion
+
+A function calls itself.
+
+```python
+def dfs(node):
+
+    if not node:
+        return
+
+    dfs(node.left)
+    dfs(node.right)
+```
+
+Every recursive solution needs:
+
+### 1. Base Case
+
+```python
+if not node:
+    return
+```
+
+### 2. Recursive Case
+
+```python
+dfs(node.left)
+dfs(node.right)
+```
+
+Common use:
+
+```text
+Trees
+Graphs
+Backtracking
+Divide and Conquer
+```
+
+---
+
+# 🔙 Backtracking
+
+Mental model:
+
+```text
+TRY
+ ↓
+EXPLORE
+ ↓
+UNDO
+```
+
+Template:
+
+```python
+def backtrack(path):
+
+    if solution_found:
+        result.append(path[:])
+        return
+
+    for choice in choices:
+
+        path.append(choice)
+
+        backtrack(path)
+
+        path.pop()
+```
+
+The important part:
+
+```python
+path.pop()
+```
+
+This is the **undo** step.
+
+Common problems:
+
+```text
+Subsets
+Permutations
+Combination Sum
+Word Search
+N-Queens
+```
+
+---
+
+# 🧠 Dynamic Programming
+
+Think:
+
+> Solve smaller problems and reuse their answers.
+
+Basic pattern:
+
+```python
+dp = [0] * (n + 1)
+
+dp[0] = ...
+dp[1] = ...
+
+for i in range(2, n + 1):
+    dp[i] = ...
+```
+
+Mental trigger:
+
+```text
+Repeated subproblems
++
+Best answer / number of ways
+        ↓
+       DP
+```
+
+Common problems:
+
+```text
+Climbing Stairs
+House Robber
+Coin Change
+Word Break
+Longest Common Subsequence
+```
+
+---
+
+# 🔃 Sorting
+
+Python's built-in sorting is usually enough.
+
+```python
+nums.sort()
+```
+
+This modifies the original list.
+
+```python
+sorted_nums = sorted(nums)
+```
+
+This returns a new sorted list.
+
+## Descending
+
+```python
+nums.sort(reverse=True)
+```
+
+## Sort by Key
+
+```python
+words.sort(key=len)
+```
+
+Complexity:
+
+```text
+O(n log n)
+```
+
+---
+
+# ❌ XOR
+
+XOR operator:
 
 ```python
 a ^ b
@@ -825,17 +1145,6 @@ Important properties:
 ```text
 x ^ x = 0
 x ^ 0 = x
-```
-
-Mental trigger:
-
-> "Pairs cancel."
-
-Useful for:
-
-```text
-Missing Number
-Single Number
 ```
 
 Example:
@@ -849,163 +1158,68 @@ for num in nums:
 return result
 ```
 
----
-
-# 20. Heap / Priority Queue ⭐⭐
-
-```python
-import heapq
-```
-
-Create:
-
-```python
-heap = []
-```
-
-Add:
-
-```python
-heapq.heappush(heap, x)
-```
-
-Remove smallest:
-
-```python
-x = heapq.heappop(heap)
-```
-
 Mental trigger:
 
 ```text
-Top K
-Repeatedly need smallest/largest
-Priority
-↓
-Heap
+PAIRS CANCEL
+        ↓
+       XOR
 ```
 
-Python `heapq` is a **min-heap** by default.
-
----
-
-# 21. Linked Lists
-
-Typical node:
-
-```python
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
-```
-
-Traverse:
-
-```python
-current = head
-
-while current:
-    print(current.val)
-    current = current.next
-```
-
-Remember:
+Common problems:
 
 ```text
-node.val
-node.next
-```
-
-Common patterns:
-
-```text
-Fast / slow pointers
-Reverse linked list
-Merge lists
+Single Number
+Missing Number
 ```
 
 ---
 
-# 22. Trees
+# 🛠️ Useful Python Functions
 
-Typical node:
-
-```python
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-```
-
-DFS:
-
-```python
-def dfs(node):
-
-    if not node:
-        return
-
-    dfs(node.left)
-    dfs(node.right)
-```
-
-Remember:
-
-```text
-node.val
-node.left
-node.right
-```
-
-Mental trigger:
-
-```text
-Go deep → DFS
-Level by level → BFS
-```
-
----
-
-# 23. List Comprehension
-
-Useful Python shortcut:
-
-```python
-squares = [x * x for x in nums]
-```
-
-With condition:
-
-```python
-positive = [x for x in nums if x > 0]
-```
-
-Don't worry about mastering this immediately.
-
-Normal loops are more important for learning algorithms.
-
----
-
-# 24. Useful Built-ins
+## Length
 
 ```python
 len(nums)
+```
+
+## Sum
+
+```python
 sum(nums)
+```
+
+## Minimum
+
+```python
 min(nums)
+```
+
+## Maximum
+
+```python
 max(nums)
+```
+
+## Absolute Value
+
+```python
 abs(x)
+```
+
+## Sort
+
+```python
 sorted(nums)
 ```
 
-Check existence:
+## Check Membership
 
 ```python
 x in nums
 ```
 
-Reverse:
+## Reverse
 
 ```python
 nums[::-1]
@@ -1013,57 +1227,158 @@ nums[::-1]
 
 ---
 
-# 25. Complexity Cheat Sheet
+# 📦 Important Imports
 
-```text
-O(1)       Constant
-O(log n)   Binary Search
-O(n)       One pass
-O(n log n) Sorting
-O(n²)      Nested loops
-O(2ⁿ)      Backtracking (often)
-```
+These are worth memorizing for LeetCode:
 
-Typical operations:
+```python
+from collections import Counter
+from collections import defaultdict
+from collections import deque
 
-```text
-Hash Set lookup       O(1) average
-Hash Map lookup       O(1) average
-List access nums[i]   O(1)
-List search           O(n)
-Sorting               O(n log n)
+import heapq
 ```
 
 ---
 
-# 26. Pattern Recognition ⭐⭐⭐
+# ⏱️ Time Complexity
 
-This is more important than memorizing Python syntax.
+| Complexity | Meaning         |
+| ---------- | --------------- |
+| O(1)       | Constant        |
+| O(log n)   | Very fast       |
+| O(n)       | One pass        |
+| O(n log n) | Usually sorting |
+| O(n²)      | Nested loops    |
+| O(2ⁿ)      | Exponential     |
+| O(n!)      | Very expensive  |
 
-| Problem clue                  | Think                   |
-| ----------------------------- | ----------------------- |
-| Have I seen this before?      | Hash Set                |
-| Need value → information      | Hash Map                |
-| Find pair that reaches target | Hash Map / Two Pointers |
-| Count occurrences             | Dictionary / Counter    |
-| Missing number                | Sum / XOR               |
-| Pairs cancel                  | XOR                     |
-| Sorted + pair                 | Two Pointers            |
-| Contiguous + longest/shortest | Sliding Window          |
-| Sorted + search               | Binary Search           |
-| Matching / nested             | Stack                   |
-| First in, first out           | Queue                   |
-| Level by level                | BFS                     |
-| Explore deeply                | DFS                     |
-| Top K                         | Heap                    |
-| Try every possible choice     | Backtracking            |
-| Repeated subproblems          | Dynamic Programming     |
+## Common Examples
+
+```python
+nums[i]
+```
+
+**O(1)**
+
+```python
+for num in nums:
+```
+
+**O(n)**
+
+```python
+for i in nums:
+    for j in nums:
+```
+
+**O(n²)**
+
+```python
+nums.sort()
+```
+
+**O(n log n)**
 
 ---
 
-# 27. The Most Important Mental Questions
+# 🧩 LeetCode Pattern Recognition
 
-Before writing code, ask:
+| If the problem says / implies... | Think...                |
+| -------------------------------- | ----------------------- |
+| Have I seen this before?         | Set                     |
+| Need value → information         | Hash Map                |
+| Count occurrences                | Counter / Hash Map      |
+| Find a pair                      | Hash Map / Two Pointers |
+| Missing number                   | Sum / XOR               |
+| Pairs cancel                     | XOR                     |
+| Sorted + pair                    | Two Pointers            |
+| Sorted + search                  | Binary Search           |
+| Contiguous subarray              | Sliding Window          |
+| Repeated range sum               | Prefix Sum              |
+| Matching / nested                | Stack                   |
+| First In → First Out             | Queue                   |
+| Level by level                   | BFS                     |
+| Go deep                          | DFS                     |
+| Top K                            | Heap                    |
+| Try every possibility            | Backtracking            |
+| Repeated subproblems             | Dynamic Programming     |
+
+---
+
+# 🧠 The Most Important Mental Map
+
+```text
+┌──────────────────────────────────────────┐
+│          LEETCODE PATTERN MAP            │
+└──────────────────────────────────────────┘
+
+"Have I seen this before?"
+            ↓
+           SET
+
+"Need information about what I've seen?"
+            ↓
+        HASH MAP
+
+"How many times?"
+            ↓
+         COUNTER
+
+"Find a pair?"
+            ↓
+    HASH MAP / TWO POINTERS
+
+"Sorted + pair?"
+            ↓
+      TWO POINTERS
+
+"Sorted + search?"
+            ↓
+     BINARY SEARCH
+
+"Contiguous + longest/shortest?"
+            ↓
+     SLIDING WINDOW
+
+"Repeated range sum?"
+            ↓
+       PREFIX SUM
+
+"Matching / nested?"
+            ↓
+          STACK
+
+"Level by level?"
+            ↓
+           BFS
+
+"Go deep?"
+            ↓
+           DFS
+
+"Top K?"
+            ↓
+          HEAP
+
+"Pairs cancel?"
+            ↓
+           XOR
+
+"Try every possibility?"
+            ↓
+      BACKTRACKING
+
+"Repeated subproblems?"
+            ↓
+           DP
+```
+
+---
+
+# 🎯 Before Solving a LeetCode Problem
+
+Ask these questions **before writing code**:
 
 ### 1. What am I looking for?
 
@@ -1077,151 +1392,300 @@ Shortest?
 Path?
 ```
 
-### 2. What have I already seen?
+### 2. What information do I need to remember?
 
 ```text
 Set?
 Dictionary?
+Counter?
 ```
 
-### 3. Do I need an index?
+### 3. Do I need the index?
 
 ```text
-No → for num in nums
-Yes → enumerate(nums)
-Need neighboring indexes → range()
+No
+→ for num in nums
+
+Yes, index + value
+→ enumerate(nums)
+
+Need indexes / neighbors
+→ range(len(nums))
 ```
 
 ### 4. Is the data sorted?
 
 ```text
-Yes → Two Pointers / Binary Search
+Yes
+→ Two Pointers / Binary Search
 ```
 
-### 5. Is the answer about a contiguous section?
+### 5. Is it asking about a contiguous section?
 
 ```text
-Yes → Sliding Window
+Yes
+→ Sliding Window / Prefix Sum
 ```
 
-### 6. Is there nesting?
+### 6. Is there nesting or matching?
 
 ```text
-Yes → Stack
+Yes
+→ Stack
 ```
 
-### 7. Is it a tree/graph?
+### 7. Is it a tree or graph?
 
 ```text
-Level by level → BFS
-Go deep → DFS
+Go deep
+→ DFS
+
+Level by level
+→ BFS
+```
+
+### 8. Do I need the top/bottom K?
+
+```text
+Yes
+→ Heap
+```
+
+### 9. Are there repeated subproblems?
+
+```text
+Yes
+→ Dynamic Programming
 ```
 
 ---
 
-# 28.1. Blind 75 Learning Order
+# 🚀 Quick LeetCode Templates
 
-Recommended progression:
+## Hash Map
 
-```text
-1. Two Sum
-       ↓
-2. Contains Duplicate
-       ↓
-3. Valid Anagram
-       ↓
-4. Missing Number
-       ↓
-5. Single Number
-       ↓
-6. 3Sum
-       ↓
-7. Valid Palindrome
-       ↓
-8. Best Time to Buy/Sell Stock
-       ↓
-9. Longest Substring Without Repeating Characters
-       ↓
-10. Binary Search
-       ↓
-11. Valid Parentheses
-       ↓
-12. Linked List problems
-       ↓
-13. Trees
-       ↓
-14. Graphs
-       ↓
-15. Heap
-       ↓
-16. Backtracking
-       ↓
-17. Dynamic Programming
+```python
+seen = {}
+
+for i, num in enumerate(nums):
+
+    if num in seen:
+        ...
+
+    seen[num] = i
+```
+
+## Hash Set
+
+```python
+seen = set()
+
+for num in nums:
+
+    if num in seen:
+        ...
+
+    seen.add(num)
+```
+
+## Two Pointers
+
+```python
+left = 0
+right = len(nums) - 1
+
+while left < right:
+
+    ...
+
+    left += 1
+    right -= 1
+```
+
+## Sliding Window
+
+```python
+left = 0
+
+for right in range(len(nums)):
+
+    ...
+
+    while condition:
+        left += 1
+
+    ...
+```
+
+## Binary Search
+
+```python
+left = 0
+right = len(nums) - 1
+
+while left <= right:
+
+    mid = (left + right) // 2
+
+    if nums[mid] == target:
+        return mid
+
+    elif nums[mid] < target:
+        left = mid + 1
+
+    else:
+        right = mid - 1
+
+return -1
+```
+
+## Stack
+
+```python
+stack = []
+
+for x in nums:
+
+    if condition:
+        stack.append(x)
+    else:
+        stack.pop()
+```
+
+## BFS
+
+```python
+from collections import deque
+
+queue = deque([start])
+visited = set([start])
+
+while queue:
+
+    node = queue.popleft()
+
+    for neighbor in graph[node]:
+
+        if neighbor not in visited:
+            visited.add(neighbor)
+            queue.append(neighbor)
+```
+
+## DFS
+
+```python
+def dfs(node):
+
+    if node in visited:
+        return
+
+    visited.add(node)
+
+    for neighbor in graph[node]:
+        dfs(neighbor)
 ```
 
 ---
 
-# 🧠 Final Memory Map
+# ⭐ My Core DSA Cheat Sheet
+
+When stuck, start here:
 
 ```text
-"I've seen this before?"
-        ↓
-      SET
+PAIR
+→ Hash Map / Two Pointers
 
-"I need information about something I've seen?"
-        ↓
-     DICTIONARY
+DUPLICATE
+→ Set
 
-"Find a pair?"
-        ↓
-HASH MAP / TWO POINTERS
+COUNT
+→ Counter / Dictionary
 
-"Count things?"
-        ↓
-DICTIONARY / COUNTER
+MISSING
+→ Sum / XOR
 
-"Missing / pairs cancel?"
-        ↓
-   XOR / SUM
+SORTED
+→ Two Pointers / Binary Search
 
-"Sorted?"
-        ↓
-TWO POINTERS / BINARY SEARCH
+CONTIGUOUS
+→ Sliding Window / Prefix Sum
 
-"Contiguous?"
-        ↓
-SLIDING WINDOW
+MATCHING
+→ Stack
 
-"Nested / matching?"
-        ↓
-      STACK
+LEVELS
+→ BFS
 
-"Level by level?"
-        ↓
-       BFS
+DEPTH / PATH
+→ DFS
 
-"Go deep?"
-        ↓
-       DFS
+TOP K
+→ Heap
 
-"Top K?"
-        ↓
-      HEAP
+ALL POSSIBILITIES
+→ Backtracking
+
+REPEATED SUBPROBLEMS
+→ Dynamic Programming
 ```
 
-## The 3 things to remember for every LeetCode problem
+---
+
+# 📈 Recommended Learning Order
 
 ```text
-1. PATTERN
-   What type of problem is this?
-
-2. DATA STRUCTURE
-   What should I use?
-   Set? Dict? Stack? Queue? Heap?
-
-3. COMPLEXITY
-   Time: ?
-   Space: ?
+Python Basics
+      ↓
+Lists & Strings
+      ↓
+Hash Map
+      ↓
+Hash Set
+      ↓
+Counter
+      ↓
+Two Pointers
+      ↓
+Sliding Window
+      ↓
+Stack
+      ↓
+Binary Search
+      ↓
+Linked Lists
+      ↓
+Trees
+      ↓
+Graphs
+      ↓
+Heap
+      ↓
+Backtracking
+      ↓
+Dynamic Programming
 ```
 
-**Don't try to memorize all of this at once.** Keep this README open while solving your first 10–20 problems. After you've used `dict`, `set`, `enumerate`, two pointers, sliding window, etc. several times, you'll start remembering them naturally.
+---
+
+## 🏁 Goal
+
+Don't try to memorize every solution.
+
+Instead, learn to recognize:
+
+```text
+PROBLEM
+   ↓
+PATTERN
+   ↓
+DATA STRUCTURE
+   ↓
+ALGORITHM
+   ↓
+CODE
+   ↓
+TIME + SPACE COMPLEXITY
+```
+
+**The goal is not to memorize LeetCode solutions.
+The goal is to recognize the pattern behind the problem.**
